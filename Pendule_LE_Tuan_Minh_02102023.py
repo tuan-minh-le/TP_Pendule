@@ -1,6 +1,5 @@
 from random import randint
 import json
-import restart
 
 def words(dict) :
     choose = dict[randint(0,len(dict)-1)]
@@ -27,7 +26,7 @@ def guess(splitword,hiddenletter):
         return True
     elif letter in splitword :
         return letter
-    else :
+    elif letter not in splitword :
         return False 
 
 def modifyguess(splitword, hiddenletters, letter) :
@@ -44,7 +43,9 @@ def openfile():
 
 def replay() :
     answer = input ("Do you want to play again (Y/N) ? : ")
-    if answer == 'Y' :
-        restart()
-    else :
-        quit()
+    return answer
+
+def score(scores, chances):
+    scores.append(chances)
+    scores.sort
+    return(scores)
