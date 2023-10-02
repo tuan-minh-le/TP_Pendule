@@ -1,5 +1,7 @@
 from random import randint
 import json
+import restart
+
 def words(dict) :
     choose = dict[randint(0,len(dict)-1)]
     return choose 
@@ -18,9 +20,12 @@ def hideletter(splitword):
 def appearance(hiddenletters) :
     print(*hiddenletters)
 
-def guess(splitword):
+def guess(splitword,hiddenletter):
     letter = input("What letter are you guessing ? : ")
-    if letter in splitword :
+    if letter in hiddenletter :
+        print("You already guessed this letter")
+        return True
+    elif letter in splitword :
         return letter
     else :
         return False 
@@ -36,3 +41,10 @@ def openfile():
     contenu = file.read()
     list = json.loads(contenu)
     return list
+
+def replay() :
+    answer = input ("Do you want to play again (Y/N) ? : ")
+    if answer == 'Y' :
+        restart()
+    else :
+        quit()

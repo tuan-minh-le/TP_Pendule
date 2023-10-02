@@ -5,6 +5,7 @@ from Pendule_LE_Tuan_Minh_02102023 import appearance
 from Pendule_LE_Tuan_Minh_02102023 import guess
 from Pendule_LE_Tuan_Minh_02102023 import modifyguess
 from Pendule_LE_Tuan_Minh_02102023 import openfile
+from Pendule_LE_Tuan_Minh_02102023 import replay
 
 dicti = openfile()
 
@@ -15,8 +16,8 @@ def main() :
     hiddenletters = hideletter(splitword)
     appearance(hiddenletters)
     while chances != 0 and "_" in hiddenletters :
-        letter = guess(splitword)
-        if letter :
+        letter = guess(splitword,hiddenletters)
+        if letter or True :
             hiddenletters = modifyguess(splitword, hiddenletters, letter)
             appearance(hiddenletters)
         else :
@@ -26,6 +27,8 @@ def main() :
         print("Congrats")
     else :
         print("zuck")
+    replay()
+    
 
 
 main()
